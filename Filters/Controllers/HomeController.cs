@@ -17,7 +17,8 @@ namespace Filters.Controllers
             return View();
         }
 
-        [RangeException]
+        [HandleError(ExceptionType = typeof(ArgumentOutOfRangeException), View = "RangeError")]
+        //[RangeException]
         public string RangeTest(int id)
         {
             if (id > 100)

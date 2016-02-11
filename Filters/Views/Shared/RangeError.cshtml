@@ -1,4 +1,8 @@
-﻿@model int
+﻿@model HandleErrorInfo
+
+@{
+    ViewBag.Title = "Sorry, there was a problem!";
+}
 
 <!DOCTYPE html>
 <html>
@@ -9,9 +13,12 @@
 </head>
 <body>
     <h2>Sorry</h2>
-    <span>The value @Model was out of the expected range.</span>
+    <span>The value @(((ArgumentOutOfRangeException)Model.Exception).ActualValue) was out of the expected range.</span>
     <div>
         @Html.ActionLink("Change value and try again", "Index")
+    </div>
+    <div>
+        @Model.Exception.StackTrace
     </div>
 </body>
 </html>
