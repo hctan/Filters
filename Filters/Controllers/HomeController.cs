@@ -16,5 +16,17 @@ namespace Filters.Controllers
             ViewBag.Message = "This is the Index action on the Home controller";
             return View();
         }
+
+        [RangeException]
+        public string RangeTest(int id)
+        {
+            if (id > 100)
+            {
+                return String.Format("The id value is: {0}", id);
+            }
+            else {
+                throw new ArgumentOutOfRangeException("id", id, "");
+            }
+        }
     }
 }
